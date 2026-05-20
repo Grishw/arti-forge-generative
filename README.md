@@ -1,4 +1,3 @@
-```markdown
 # ARTi Platform – Generative Services
 
 Серверная часть для генерации изображений и 3D‑моделей с использованием искусственного интеллекта.  
@@ -204,4 +203,3 @@ with open("output.png", "wb") as f:
 
 **ARTi Platform** – объединение искусства и технологий.  
 Forge • Lens • Curat
-```

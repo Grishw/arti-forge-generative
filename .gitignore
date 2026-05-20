@@ -216,3 +216,37 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# --- Модели и веса (если не хранятся в LFS) ---
+*.bin
+*.safetensors
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.onnx
+
+# Папки с моделями (обычно загружаются при старте или через LFS)
+models/
+checkpoints/
+pretrained/
+
+# --- Артефакты генерации ---
+generated_models/
+outputs/
+temp/
+
+# --- Прочее ---
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Исключения: хранить пустую папку generated_models
+!generated_models/.gitkeep

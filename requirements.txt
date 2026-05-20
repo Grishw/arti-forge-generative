@@ -1,0 +1,8 @@
+fastapi>=0.110,<1.0
+uvicorn[standard]
+aiohttp
+Pillow
+trimesh
+torch>=2.0
+diffusers
+accelerate

@@ -1,30 +1,46 @@
-fastapi>=0.110,<1.0
-uvicorn[standard]
-aiohttp
-Pillow
-trimesh
-torch>=2.0
-diffusers
-accelerate
+# ARTi Forge – Generative Services
+# Python 3.10+
 
+# --- Сначала указываем индекс для PyTorch ---
+--index-url https://download.pytorch.org/whl/cu126
+torch
+torchvision
 
-gradio
+# --- Затем возвращаемся к обычному PyPI (через extra-index) ---
+--extra-index-url https://pypi.org/simple
+
+# --- Основные зависимости ---
+fastapi>=0.110.0,<1.0.0
+uvicorn[standard]>=0.27.0,<1.0.0
+pydantic>=2.0,<3.0
+python-multipart>=0.0.9
+aiohttp>=3.9.0,<4.0.0
+requests>=2.31.0
+
+# Работа с изображениями и 3D
+Pillow>=10.0.0
+trimesh>=4.3.0
+numpy>=1.26.0
+
+# --- Генеративные модели ---
+diffusers>=0.25.0
+accelerate>=0.25.0
+transformers>=4.40.0
+huggingface_hub>=0.20.0
+
+# --- hy3dgen ---
 tqdm>=4.66.3
-numpy
 ninja
-diffusers
 pybind11
 opencv-python
 einops
-transformers>=4.48.0
 omegaconf
-trimesh
 pymeshlab
 pygltflib
 xatlas
-accelerate
-gradio
-fastapi
-uvicorn
 rembg
 onnxruntime
+pyyaml
+
+sentencepiece 
+tiktoken

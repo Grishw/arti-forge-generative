@@ -2,6 +2,8 @@ import torch
 import trimesh
 from PIL import Image
 from pipelines.base import BaseImage2Shape
+from hy3dgen.shapegen.postprocessors import FloaterRemover, DegenerateFaceRemover, FaceReducer
+        
 
 class Hunyuan3DShapePipeline(BaseImage2Shape):
     """
@@ -32,12 +34,8 @@ class Hunyuan3DShapePipeline(BaseImage2Shape):
     ):
         # Отложенный импорт, чтобы не требовать hy3dgen при отсутствии
         from hy3dgen.rembg import BackgroundRemover
-        from hy3dgen.shapegen import (
-            Hunyuan3DDiTFlowMatchingPipeline,
-            FloaterRemover,
-            DegenerateFaceRemover,
-            FaceReducer
-        )
+        from hy3dgen.shapegen import Hunyuan3DDiTFlowMatchingPipeline 
+        
 
         self.device = device
         self.max_faces = max_faces

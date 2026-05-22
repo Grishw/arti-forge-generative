@@ -1,7 +1,7 @@
 import asyncio
 import torch
 from services.base import BaseImage2ShapeService
-from pipelines.Hunyuan.Hunyuan3DShapePipeline import Hunyuan3DShapePipeline
+from pipelines import get_image2shape_class
 from config import settings
 
 class Image2ShapeService(BaseImage2ShapeService):
@@ -10,9 +10,11 @@ class Image2ShapeService(BaseImage2ShapeService):
             raise ValueError("Image2ShapeService требует профиль 'high'")
         self.model = None
         self._lock = asyncio.Lock()
+        self.model_name = settings.image2shape_model_name
 
     def _create_model(self):
-        return Hunyuan3DShapePipeline(
+        cls = get_image2shape_class(self.model_name)
+        return cls(
             shape_model_path=settings.shape_model,
             tex_model_path=settings.tex_model,
             subfolder=settings.subfolder,

@@ -1,8 +1,7 @@
 import asyncio
 import torch
 from services.base import BaseText2ImageService
-from pipelines.SD.SDTurboText2Image import SDTurboText2Image
-from pipelines.PixArt.PixArtSigmaText2Image import PixArtSigmaText2Image
+from pipelines import get_text2image_class
 from config import settings
 
 class Text2ImageService(BaseText2ImageService):
@@ -10,16 +9,14 @@ class Text2ImageService(BaseText2ImageService):
         self.profile = profile
         self.model = None
         self._lock = asyncio.Lock()
+        # Определяем имя модели
+        self.model_name = settings.text2image_model_name
+        self.model_path = settings.text2img_model
 
     def _create_model(self):
-        if self.profile == "high":
-            return PixArtSigmaText2Image(
-                model_path=settings.text2img_model,
-                device=settings.device,
-                offload=False
-            )
-        else:
-            return SDTurboText2Image(device=settings.device)
+        cls = get_text2image_class(self.model_name)
+        # Параметры конструктора могут различаться, поэтому передаём общие
+        return cls(model_path=self.model_path, device=settings.device)
 
     async def load_model(self):
         async with self._lock:

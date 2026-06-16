@@ -5,6 +5,7 @@
 Требует профиль 'high' (GPU).
 
 
+python -m microservices.image2shape_server
 
 Поддерживает:
 - синхронную генерацию (возвращает GLB сразу) – /generate

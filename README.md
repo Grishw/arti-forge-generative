@@ -202,4 +202,4 @@ with open("output.png", "wb") as f:
 ---
 
 **ARTi Platform** – объединение искусства и технологий.  
-Forge • Lens • Curat
+Forge • Lens • [Curat](https://github.com/Grishw/arti-forge-curate)
